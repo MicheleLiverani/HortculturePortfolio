@@ -3,7 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Veronica Tampieri | Horticulture Specialist</title>
+    <title>VT.</title>
+    
+    <link rel="icon" type="image/png" href="images/favicon.png">
+
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -11,21 +14,17 @@
     <style>
         /* --- CSS VARIABLES: DARK & COZY THEME --- */
         :root {
-            /* Palette: Deep Forest, Charcoal, Warm Earth */
-            --bg-main: #1a1c1a;       /* Very dark green/grey background */
-            --bg-card: #262b26;       /* Slightly lighter card background */
-            --primary-green: #7d9c74; /* Muted Sage Green for accents */
-            --text-main: #e8e6e1;     /* Light cream text */
-            --text-muted: #b0b3b0;    /* Grey text */
-            --accent-terracotta: #d68c70; /* Warm terracotta */
+            --bg-main: #1a1c1a;       
+            --bg-card: #262b26;       
+            --primary-green: #7d9c74; 
+            --text-main: #e8e6e1;     
+            --text-muted: #b0b3b0;    
+            --accent-terracotta: #d68c70; 
             --border-radius: 16px;
-            --shadow: 0 10px 30px rgba(0,0,0,0.4); /* Stronger shadow for dark mode */
+            --shadow: 0 10px 30px rgba(0,0,0,0.4); 
         }
 
-        /* --- SMOOTH SCROLLING --- */
-        html {
-            scroll-behavior: smooth;
-        }
+        html { scroll-behavior: smooth; }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -76,48 +75,64 @@
             font-weight: bold;
         }
 
-        /* --- HERO SECTION --- */
+        /* --- HERO SECTION (Updated for Full Overlay) --- */
         .hero {
-            padding: 6rem 5%;
+            position: relative;
+            padding: 0 5%;
             text-align: center;
-            /* Dark gradient background */
-            background: linear-gradient(135deg, #121412 0%, #1a1c1a 100%);
-            min-height: 85vh;
+            /* Full screen height minus header approx */
+            min-height: 90vh; 
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-        }
-
-        /* WIDE PROFILE PICTURE */
-        .profile-img {
-            width: 100%;
-            max-width: 800px;  /* Much wider */
-            height: 400px;     /* Fixed height to crop top/bottom */
-            border-radius: 24px;
-            border: 1px solid rgba(255,255,255,0.1);
-            box-shadow: var(--shadow);
-            margin-bottom: 2.5rem;
             
-            background-image: url('images/profile.JPG');
+            /* Profile Picture as Background + Dark Gradient Overlay */
+            background: linear-gradient(
+                to bottom,
+                rgba(26, 28, 26, 0.2), /* Lighter at top to see face */
+                rgba(26, 28, 26, 0.8)  /* Darker at bottom for text contrast */
+            ), url('images/profile.jpg');
+            
             background-size: cover;
-            /* Centers the image vertically so we see the face, crops top/bottom */
-            background-position: center 30%; 
+            background-position: center 25%; /* Adjusted to focus on face */
+            color: white;
         }
 
-        .hero h1 { font-size: 3.5rem; margin-bottom: 0.5rem; letter-spacing: 1px; }
-        .hero p { font-size: 1.3rem; color: var(--text-muted); max-width: 600px; margin-bottom: 2.5rem; }
+        /* Hero Text Styles to pop against image */
+        .hero h1 { 
+            font-size: 4.5rem; 
+            margin-bottom: 0.5rem; 
+            letter-spacing: 1px;
+            text-shadow: 0 4px 15px rgba(0,0,0,0.6);
+        }
+        
+        .hero p { 
+            font-size: 1.5rem; 
+            color: #f0f0f0; 
+            max-width: 700px; 
+            margin-bottom: 2.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.6);
+            font-weight: 600;
+        }
 
         .btn {
             background-color: var(--accent-terracotta);
             color: var(--bg-main);
-            padding: 1rem 2.5rem;
-            border-radius: 30px;
-            font-weight: 700;
+            padding: 1.2rem 3rem;
+            border-radius: 50px;
+            font-weight: 800;
+            font-size: 1.1rem;
             display: inline-block;
-            box-shadow: 0 4px 15px rgba(214, 140, 112, 0.2);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+            border: 2px solid white; 
         }
-        .btn:hover { background-color: #e8a58a; transform: translateY(-2px); }
+        .btn:hover { 
+            background-color: var(--bg-main); 
+            color: var(--accent-terracotta); 
+            border-color: var(--accent-terracotta);
+            transform: translateY(-3px); 
+        }
 
         /* --- SECTIONS COMMON --- */
         section { padding: 5rem 10%; }
@@ -140,24 +155,18 @@
         /* --- ABOUT --- */
         #about { background-color: var(--bg-card); }
 
-        /* --- EXPERIENCE (Split Layout) --- */
-        /* Container for the 2-column layout */
+        /* --- EXPERIENCE --- */
         .experience-container {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr; /* Text gets slightly more space */
+            grid-template-columns: 1.2fr 0.8fr;
             gap: 3rem;
             align-items: start;
         }
 
-        /* The timeline column */
-        .resume-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 2rem;
-        }
+        .resume-grid { display: flex; flex-direction: column; gap: 2rem; }
 
         .resume-item {
-            background: rgba(255,255,255,0.03); /* Very subtle overlay */
+            background: rgba(255,255,255,0.03);
             padding: 2rem;
             border-radius: var(--border-radius);
             border-left: 4px solid var(--accent-terracotta);
@@ -170,20 +179,19 @@
         .resume-company { font-weight: 600; color: var(--text-muted); margin-bottom: 1rem; display: block; font-size: 0.95rem; }
         .resume-desc { font-size: 0.95rem; color: #ccc; }
 
-        /* The Image Side (Wageningen) */
         .experience-image {
-            position: sticky; /* Keeps it in view while scrolling */
+            position: sticky;
             top: 100px;
             height: 600px;
             border-radius: var(--border-radius);
-            background-image: url('images/wageningen.JPG');
+            background-image: url('images/wageningen.jpg');
             background-size: cover;
             background-position: center;
             box-shadow: var(--shadow);
             opacity: 0.9;
         }
 
-        /* --- PASSIONS (HOBBIES) --- */
+        /* --- PASSIONS --- */
         .hobbies-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -200,14 +208,13 @@
         .hobby-card:hover { transform: translateY(-8px); }
 
         .hobby-img {
-            /* INCREASED HEIGHT TO SEE FACE */
             height: 450px; 
             background-size: cover;
             background-position: center;
         }
         
-        .img-incense { background-image: url('images/incense.JPG'); }
-        .img-seeds   { background-image: url('images/travel.JPG'); } 
+        .img-incense { background-image: url('images/incense.jpg'); }
+        .img-seeds   { background-image: url('images/travel.jpg'); } 
 
         .hobby-content { padding: 2.5rem; }
         .hobby-content h3 { color: var(--accent-terracotta); margin-bottom: 1rem; }
@@ -215,7 +222,7 @@
         /* --- CONTACT --- */
         #contact { padding-bottom: 5rem; }
         .contact-box {
-            background-color: #2a302a; /* Slightly greener dark box */
+            background-color: #2a302a;
             color: white;
             padding: 4rem;
             border-radius: var(--border-radius);
@@ -229,23 +236,16 @@
 
         /* --- RESPONSIVE --- */
         @media (max-width: 900px) {
-            .experience-container {
-                grid-template-columns: 1fr; /* Stack them */
-            }
-            .experience-image {
-                position: static; /* No sticky on mobile */
-                height: 300px;
-                order: -1; /* Put image above text on mobile? Or remove order to put below. Let's keep it below by default. */
-                margin-bottom: 2rem;
-            }
-            .profile-img { height: 300px; }
+            .experience-container { grid-template-columns: 1fr; }
+            .experience-image { position: static; height: 300px; order: -1; margin-bottom: 2rem; }
+            .hero h1 { font-size: 3rem; }
         }
 
         @media (max-width: 768px) {
             header { flex-direction: column; gap: 1rem; }
-            .hero h1 { font-size: 2.2rem; }
+            .hero h1 { font-size: 2.5rem; }
             section { padding: 3rem 5%; }
-            .hobby-img { height: 300px; } /* Smaller images on mobile */
+            .hobby-img { height: 300px; }
         }
     </style>
 </head>
@@ -269,7 +269,6 @@
     </header>
 
     <section class="hero">
-        <div class="profile-img"></div>
         <h1>Veronica Tampieri</h1>
         <p class="lang" data-key="hero_tagline">MSc Plant Sciences • Greenhouse Horticulture Specialist</p>
         <a href="#contact" class="btn lang" data-key="hero_btn">Get in Touch</a>
@@ -295,7 +294,6 @@
         <h2 class="section-title lang" data-key="exp_title">Experience & Education</h2>
         
         <div class="experience-container">
-            
             <div class="resume-grid">
                 <div class="resume-item">
                     <span class="resume-date">2025</span>
@@ -335,14 +333,12 @@
             </div>
 
             <div class="experience-image"></div>
-            
         </div>
     </section>
 
     <section id="passions" style="background-color: var(--bg-card);">
         <h2 class="section-title lang" data-key="passions_title">Curiosities & Passions</h2>
         <div class="hobbies-grid">
-            
             <div class="hobby-card">
                 <div class="hobby-img img-incense"></div>
                 <div class="hobby-content">
@@ -364,7 +360,6 @@
                     </p>
                 </div>
             </div>
-
         </div>
     </section>
 
